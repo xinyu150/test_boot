@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.xinyu.test_boot.dao.PersonDao">
+
+    <sql id ="personData">
+        ID,NAME,AGE
+    </sql>
+
+    <resultMap id="personMap" type="com.xinyu.test_boot.bean.PersonBean">
+        <id column="ID" jdbcType="VARCHAR" property="id" />
+        <result column="NAME" jdbcType="VARCHAR" property="name" />
+        <result column="AGE"  jdbcType="VARCHAR" property="age" />
+    </resultMap>
+
+    <select id="getMessage" parameterType="string" resultMap="personMap">
+        select
+        ID,NAME,AGE
+        from PersonTable
+        where ID = #{id}
+    </select>
+
+    <insert id="addPersion" parameterType="map">
+        insert into PersonTable(ID,NAME,AGE)
+        values
+        (#{id,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{age,jdbcType=VARCHAR})
+    </insert>
+
+    <update id="updatePerson" parameterType="map">
+        update PersonTable
+        set NAME = #{name,jdbcType=VARCHAR},AGE = #{age,jdbcType=VARCHAR}
+        where (ID=#{id})
+    </update>
+
+    <delete id="deletePerson" parameterType="string">
+        delete Person where (ID=#{id})
+    </delete>
+
+    <select id="getAllMessage" resultMap="personMap">
+        select
+        <include refid="personData" />
+        from PersonTable
+    </select>
+
+</mapper>
