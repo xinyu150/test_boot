@@ -1,0 +1,49 @@
+
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SpringBoot模版渲染</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+</head>
+<body>
+    <!-- <p th:text="'用户ID：' + ${uid}"/>
+    <p th:utext="'用户名称：' + ${name}"/> -->
+    
+    <div>
+	    <p th:text="'用户编号：' + ${member.uid}"/>
+	    <p th:text="'用户姓名：' + ${member.name}"/>
+	    <p th:text="'用户年龄：' + ${member.age}"/>
+	    <p th:text="'用户工资：' + ${member.salary}"/>
+	    <p th:text="'出生日期：' + ${member.birthday}"/>
+	    <p th:text="'出生日期：' + ${#dates.format(member.birthday,'yyyy-MM-dd')}"/>
+	</div>
+	
+	<hr/>
+	<div>
+		<span th:if="${member.age lt 18}">
+		未成年人！
+		</span>
+		<span th:if="${member.name eq '啊三'}">
+		欢迎小三来访问！
+		</span>
+	</div>
+	
+	<hr/>
+	<div>
+		<span th:unless="${member.age gt 18}">
+		你还不满18岁，不能够看电影！
+		</span>
+	</div>
+	
+	<hr/>
+	<div>
+		<span th:switch="${member.uid}">
+		<p th:case="100">uid为101的员工来了</p>
+		<p th:case="99">uid为102的员工来了</p>
+		<p th:case="*">没有匹配成功的数据！</p>
+		</span>
+	</div>
+	
+</body>
+</html>
