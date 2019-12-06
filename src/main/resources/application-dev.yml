@@ -1,0 +1,34 @@
+server:
+  port: 8080
+spring:
+  redis:
+    password:
+    database: 0
+    port: 6379
+    host: 127.0.0.1
+    lettuce:
+      pool:
+        max-idle: 10
+        min-idle: 0
+        max-active: 10
+        max-wait: -1ms
+    timeout: 10000ms
+    
+  datasource: 
+    url: jdbc:mysql://localhost:3306/test  
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    max-idle: 10
+    max-wait: 10000
+    min-idle: 5
+    initial-size: 5
+   
+  thymeleaf: 
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+    
+mybatis: 
+  mapper-locations: classpath:domain/*.xml
+  type-aliases-package: com.xinyu.test_boot.bean
