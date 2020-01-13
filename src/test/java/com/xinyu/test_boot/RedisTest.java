@@ -20,5 +20,4 @@ public class RedisTest {
 	public void test() {
 		redisTemplate.opsForValue().set("key","value", 60, TimeUnit.SECONDS);
 	}
-
 }
