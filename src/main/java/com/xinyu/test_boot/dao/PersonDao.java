@@ -35,7 +35,7 @@ public interface PersonDao {
      * @param id
      * @return
      */
-    int deletePerson(String id);
+    int deletePerson(int id);
 
     /**
      * 获取所有的信息

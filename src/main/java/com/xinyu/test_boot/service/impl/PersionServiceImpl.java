@@ -36,7 +36,8 @@ public class PersionServiceImpl implements PersonService {
 
     @Override
     public int deletePerson(String personId) {
-        int cnt = personDao.deletePerson(personId);
+    	int int_id = Integer.valueOf(personId);
+        int cnt = personDao.deletePerson(int_id);
         return cnt;
     }
 

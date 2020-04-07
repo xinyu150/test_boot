@@ -1,8 +1,8 @@
 package com.xinyu.test_boot.interceptor;
 import com.alibaba.fastjson.JSONObject;
 import com.xinyu.test_boot.annotation.RequestLimit;
-import com.xinyu.test_boot.common.ApiResultEnum;
-import com.xinyu.test_boot.common.Result;
+import com.xinyu.test_boot.global.GlobalConst.ErrorCode;
+import com.xinyu.test_boot.global.Response;
 
 import lombok.extern.slf4j.Slf4j;
 import java.io.IOException;
@@ -48,7 +48,7 @@ public class RequestLimitIntercept extends HandlerInterceptorAdapter {
             RequestLimit requestLimit = methodAnnotation != null?methodAnnotation:classAnnotation;
             if(requestLimit != null){
                 if(isLimit(request,requestLimit)){
-                    resonseOut(response,Result.error(ApiResultEnum.REQUST_LIMIT));
+                    resonseOut(response,Response.error(ErrorCode.REQUST_LIMIT));
                     return false;
                 }
                 
@@ -84,7 +84,7 @@ public class RequestLimitIntercept extends HandlerInterceptorAdapter {
      * @param result
      * @throws IOException
      */
-    private void resonseOut(HttpServletResponse response, Result result) throws IOException {
+    private void resonseOut(HttpServletResponse response, Response result) throws IOException {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json; charset=utf-8");
         PrintWriter out = null ;
