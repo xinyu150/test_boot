@@ -1,0 +1,44 @@
+server:
+  port: 8080
+spring:
+  
+  # 缓存使用
+  redis:
+    password:
+    database: 0
+    port: 6379
+    host: 192.168.106.192
+    lettuce:
+      pool:
+        max-idle: 10
+        min-idle: 0
+        max-active: 10
+        max-wait: -1ms
+    timeout: 10000ms
+  
+  # 数据库配置
+  datasource: 
+    url: jdbc:mysql://192.168.106.192:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    max-idle: 10
+    max-wait: 10000
+    min-idle: 5
+    initial-size: 5
+   
+  # 模板文件位置
+  thymeleaf: 
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+  
+  # 安全认证
+  security:
+    user:
+      name: xinyu
+      password: 123456
+    
+mybatis: 
+  mapper-locations: classpath:domain/*.xml
+  type-aliases-package: com.xinyu.test_boot.bean
